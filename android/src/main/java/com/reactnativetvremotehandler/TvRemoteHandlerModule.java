@@ -50,7 +50,7 @@ public class TvRemoteHandlerModule extends ReactContextBaseJavaModule {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
           @Override
           public void run() {
-            mJSModule.emit("onKeyDown", getJsEventParams(keyCode, keyEvent, null));
+            mJSModule.emit("onKeyDown", getJsEventParams(keyCode, keyEvent));
           }
         });
     };
