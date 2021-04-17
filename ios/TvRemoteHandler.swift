@@ -55,24 +55,24 @@ class TvRemoteHandler: RCTEventEmitter {
     
     func addTapRightGestureRecognizer() {
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(tapedRight))
-        recognizer.allowedPressTypes = [UIPress.PressType.leftArrow.rawValue as NSNumber]
+        recognizer.allowedPressTypes = [UIPress.PressType.rightArrow.rawValue as NSNumber]
         rootViewController?.view.addGestureRecognizer(recognizer)
     }
     
     @objc func swipedLeft(r: UISwipeGestureRecognizer) {
-
+        sendAppleTVEvent(eventType: "swipedLeft", viewTag: 0)
     }
     
     @objc func swipedRight(r: UISwipeGestureRecognizer) {
-
+        sendAppleTVEvent(eventType: "swipedRight", viewTag: 0)
     }
 
     @objc func tapedLeft(r: UITapGestureRecognizer) {
-
+        sendAppleTVEvent(eventType: "left", viewTag: 0)
     }
     
     @objc func tapedRight(r: UITapGestureRecognizer) {
-
+        sendAppleTVEvent(eventType: "right", viewTag: 0)
     }
     
     @objc func sendAppleTVEvent(eventType: String, viewTag: Int) {
@@ -111,6 +111,6 @@ class TvRemoteHandler: RCTEventEmitter {
     
     @objc
     override func supportedEvents() -> [String]! {
-      return ["MyEvent","MyEvent2"];
+      return ["onKeyDown"];
     }
 }
