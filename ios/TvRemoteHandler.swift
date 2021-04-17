@@ -76,38 +76,8 @@ class TvRemoteHandler: RCTEventEmitter {
     }
     
     @objc func sendAppleTVEvent(eventType: String, viewTag: Int) {
-        self.sendEvent(withName:"MyEvent", body:["eventType": eventType, "viewTag": viewTag ]);
+        self.sendEvent(withName:"onKeyDown", body:["eventType": eventType, "viewTag": viewTag ]);
     }
-
-    
-//    @objc
-//    func onKeyDownListener() -> Void {
-//        print("LOG_SOME_SHIT_handleGestureLeft")
-//        let rootViewController = getViewController()
-//        let swipeRecognizerLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGestureLeft))
-//        swipeRecognizerLeft.direction = .left;
-//        rootViewController?.view.addGestureRecognizer(swipeRecognizerLeft)
-//
-//        let tapRecognizerLeft = UITapGestureRecognizer(target: self, action: #selector(handleGestureTapLeft(_:)));
-//        let allowedPressTypes: [NSNumber] =  [UIPress.PressType.leftArrow.rawValue as NSNumber, UIPress.PressType.rightArrow.rawValue as NSNumber];
-//        tapRecognizerLeft.allowedPressTypes = allowedPressTypes
-//        rootViewController?.view.addGestureRecognizer(tapRecognizerLeft)
-////        tapRecognizerLeft.allowedPressTypes
-////        tapRecognizerLeft.direction = .left;
-//    }
-//
-//    @objc func handleGestureLeft() {
-//        print("LOG_SOME_SHIT_handleGestureLeft111")
-//        let focusedView = UIScreen.main.focusedView
-//
-//        self.sendEvent(withName:"MyEvent", body:["name": "some name", "nativeId": focusedView?.nativeID ]);
-//    }
-//
-//    @objc func handleGestureTapLeft(_ r: UITapGestureRecognizer) {
-//        print("LOG_SOME_SHIT_handleGestureLeft111")
-//
-//        self.sendEvent(withName:"MyEvent", body:["name": "tapped some name", "view": UIScreen.main.focusedView?.tag]);
-//    }
     
     @objc
     override func supportedEvents() -> [String]! {
