@@ -7,10 +7,10 @@ function useTVRemoteHandler(callback: any) {
   useEffect(() => {
     listener = DeviceEventEmitter.addListener(
       'onKeyDown',
-      ({ action, focusedViewId }) => {
+      ({ action, focusedViewId, eventType }) => {
         return callback({
           tag: focusedViewId,
-          eventType: 'focus',
+          eventType: eventType,
           eventKeyAction: action,
         });
       }

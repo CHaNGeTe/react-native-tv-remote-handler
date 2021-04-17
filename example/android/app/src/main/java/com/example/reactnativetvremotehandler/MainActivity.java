@@ -21,4 +21,13 @@ public class MainActivity extends ReactActivity {
       TvRemoteHandlerModule.getInstance().onKeyDownEvent(keyCode, event);
       return super.onKeyDown(keyCode, event);
   }
+
+  @Override
+  public boolean dispatchKeyEvent(KeyEvent event) {
+      if (event.action == KeyEvent.ACTION_DOWN) {
+          TvRemoteHandlerModule.getInstance().onKeyDownEvent(event);
+      }
+
+      return super.dispatchKeyEvent(event);
+  }
 }
