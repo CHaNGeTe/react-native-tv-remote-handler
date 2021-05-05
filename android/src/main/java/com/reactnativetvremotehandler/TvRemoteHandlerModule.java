@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 
 import java.util.Map;
+import java.util.Objects;
 
 @ReactModule(name = TvRemoteHandlerModule.NAME)
 public class TvRemoteHandlerModule extends ReactContextBaseJavaModule {
@@ -78,10 +79,15 @@ public class TvRemoteHandlerModule extends ReactContextBaseJavaModule {
         int action = keyEvent.getAction();
         int eventKeyCode = keyEvent.getKeyCode();
         String eventType = KEY_EVENTS_ACTIONS.containsKey(eventKeyCode) ? KEY_EVENTS_ACTIONS.get(eventKeyCode) : "";
+        String focusedViewId = "";
+
+        if (this.getCurrentActivity() != null && this.getCurrentActivity().getCurrentFocus() != null) {
+            focusedViewId = String.valueOf(this.getCurrentActivity().getCurrentFocus().getId());
+        }
 
         params.putString("eventType", eventType);
         params.putInt("action", action);
-        params.putString("focusedViewId", String.valueOf(this.getCurrentActivity().getCurrentFocus().getId()));
+        params.putString("focusedViewId", focusedViewId);
 
         return params;
     }
